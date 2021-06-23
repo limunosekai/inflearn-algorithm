@@ -11,14 +11,14 @@
       // 내가 작성한 답안
       function solution(a, b, c) {
         let result;
-        if(a < b) {
-          if(a < c) {
+        if (a < b) {
+          if (a < c) {
             result = a;
           } else {
             result = c;
           }
         } else {
-          if(b < c) {
+          if (b < c) {
             result = b;
           } else {
             result = c;
@@ -30,18 +30,17 @@
       // 선생님이 작성한 답안
       function solution2(a, b, c) {
         let result;
-        if(a < b) result = a;
+        if (a < b) result = a;
         else result = b;
-        if(c < result) result = c;
+        if (c < result) result = c;
         return result;
       }
-      
+
       // 출력
       console.log(solution(7, 3, 1)); // 1
-      console.log(solution(7, 3, 1)); // 1
+      console.log(solution2(7, 3, 1)); // 1
 
-      // result 자체를 비교 대상으로 삼을 생각을 못했다..
-
+      // result 자체를 비교 대상으로 삼을 생각을 못했다.
     </script>
   </body>
 </html>

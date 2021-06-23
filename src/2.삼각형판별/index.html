@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    // 내가 작성한 답안
+    function triangle(max,rest1,rest2) {
+      if(max <= rest1 + rest2) {
+        return 'ABLE';
+      } else {
+        return 'DISABLE';
+      }
+    };
+
+    function solution(a, b, c) {
+      let temp;
+      if(a < b) temp = b;
+      else temp = a;
+
+      if(temp < c) {
+        return triangle(c,a,b);
+      } else {
+        if(a > b) {
+          return triangle(a,b,c);
+        } else {
+          return triangle(b,a,c);
+        }
+      }
+    };
+    
+    // 선생님이 작성한 답안
+    function solution2(a, b, c){
+      let answer, max;
+      let sum = a + b + c;
+      
+      if(a > b) max = a;
+      else max = b;
+      if(c > max) max = c;
+
+      if((sum - max) <= max) {
+        answer = 'DISABLE';
+      } else {
+        answer = 'ABLE';
+      }
+      return answer;
+    }
+
+    console.log(solution(6,3,8)); // ABLE
+    console.log(solution2(6,3,8)); // ABLE
+
+    /* 
+    temp가 제일 큰 경우 무엇이 temp인지를 몰라서 난감했었다.
+    그러나 temp가 a,b,c 어느것이던 상관없이 전체를 다 더한 후
+    temp를 빼서 비교가 가능했다.
+    */
+
+  </script>
+</body>
+</html>
