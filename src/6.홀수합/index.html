@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      // 내가 작성한 답안
+      function solution(arr) {
+        let answer;
+        answer = arr
+          .filter((item) => item % 2 !== 0)
+          .reduce((total, curr) => {
+            total += curr;
+            return total;
+          }, 0);
+        return answer;
+      }
+
+      // 선생님이 작성한 답안
+      function solution2(arr) {
+        let answer = 0;
+        for(let x of arr) {
+          if(x % 2 === 1) {
+            answer += x;
+          }
+        }
+        return answer;
+      }
+
+      console.log(solution([4, 7, 8, 5, 3, 10, 1, 2])); // 16
+      console.log(solution2([4, 7, 8, 5, 3, 10, 1, 2])); // 16
+    </script>
+  </body>
+</html>

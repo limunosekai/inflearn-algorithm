@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      // 내가 작성한 답안
+      function solution(a, b, c, d, e, f) {
+        let temp = [];
+        temp.push(a, b, c, d, e, f);
+        temp.sort((x, y) => x - y);
+        return temp[0];
+      }
+
+      // 선생님이 작성한 답안
+      function solution2(arr) {
+        let min = Number.MAX_SAFE_INTEGER;
+        for (let i = 0; i < arr.length; i++) {
+          if (arr[i] < min) min = arr[i];
+        }
+        return min;
+      }
+
+      function solution3(arr) {
+        let answer = Math.min(...arr);
+        return answer;
+      }
+
+      console.log(solution(4, 7, 8, 5, 3, 10)); // 3
+      console.log(solution2([4, 7, 8, 5, 3, 10])); // 3
+      console.log(solution3([4, 7, 8, 5, 3, 10])); // 3
+
+      /* 
+      나는 내장 메소드를 썼고 선생님은 변수를 선언하여
+      계속 갈아끼우는 방식을 채택
+      */
+    </script>
+  </body>
+</html>
