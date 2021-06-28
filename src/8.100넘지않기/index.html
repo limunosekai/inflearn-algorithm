@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      // 내가 작성한 답안
+      function solution(arr) {
+        for(let i=0; i<arr.length; i++) {
+          let temp = [...arr];
+          temp.splice(i, 1);
+          for(let j=0; j<arr.length - 1; j++) {
+            let answer = [...temp];
+            answer.splice(j, 1);
+            if(answer.reduce((total, curr) => {
+              total += curr;
+              return total;
+            }, 0) <= 100) {
+              return answer;
+            }
+          }
+        }
+        return '정답 없음';
+      }
+
+      // 선생님이 작성한 답안
+      function solution2(arr) {
+        let answer = arr;
+        let sum = arr.reduce((a, b) => a + b, 0);
+
+        for(let i=0; i<arr.length - 1; i++) {
+          for(let j=i+1; j< arr.length; j++) {
+            if((sum - (arr[i] + arr[j])) <= 100) {
+              arr.splice(j, 1);
+              arr.splice(i, 1);
+              return answer;
+            }
+          }
+        }
+      }
+
+      console.log(solution([10, 5, 17, 21, 13, 11, 15, 25, 14])); // 5, 17, 13, 11, 15, 25, 14
+      console.log(solution2([10, 5, 17, 21, 13, 11, 15, 25, 14])); // 5, 17, 13, 11, 15, 25, 14
+    </script>
+  </body>
+</html>

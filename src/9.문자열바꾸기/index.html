@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      // 내가 작성한 답안
+      function solution(str) {
+        let answer = '';
+        const temp = str.split('');
+
+        for (let i = 0; i < temp.length; i++) {
+          if (temp[i] === 't') {
+            temp[i] = 'T';
+          }
+        }
+
+        answer = temp.join('');
+
+        return answer;
+      }
+
+      // 선생님이 작성한 답안
+      function solution2(str) {
+        let answer = '';
+
+        for (let x of str) {
+          if (x === 't') answer += 'T';
+          else answer += x;
+        }
+
+        return answer;
+      }
+
+      function solution3(str) {
+        let answer = str.replace(/t/g, 'T');
+        return answer;
+      }
+
+      console.log(solution('tomato')); // TomaTo
+      console.log(solution2('tomato')); // TomaTo
+      console.log(solution3('tomato')); // TomaTo
+    </script>
+  </body>
+</html>
