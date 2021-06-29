@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      // 내가 작성한 답안
+      function solution(arr) {
+        let answer = [];
+
+        arr.forEach((item) => {
+          if (!answer.includes(item)) {
+            answer.push(item);
+          }
+        });
+
+        return answer;
+      }
+
+      // 선생님이 작성한 답안
+      function solution2(s) {
+        let answer = [];
+
+        answer = s.filter((v, i) => {
+          // if(s.indexOf(v) === i) return true;
+          return s.indexOf(v) === i;
+        });
+
+        return answer;
+      }
+
+      console.log(solution(['tomato', 'apple', 'fig', 'apple', 'tomato'])); // tomato, apple, fig
+      console.log(solution2(['tomato', 'apple', 'fig', 'apple', 'tomato'])); // tomato, apple, fig
+    </script>
+  </body>
+</html>
