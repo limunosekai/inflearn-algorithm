@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      // 내가 작성한 답안
+      function solution(arr) {
+        let answer = [];
+        let temp = Number.MAX_SAFE_INTEGER;
+        
+        for(let i=0; i<arr.length; i++) {
+          if(arr[i] < temp) {
+            answer.push(arr[i]);
+          }
+          temp = arr[i];
+        }
+
+        return answer;
+      }
+
+      // 선생님이 작성한 답안
+      function solution2(arr) {
+        let answer = [];
+        answer.push(arr[0]);
+
+        for(let i=1; i<arr.length; i++) {
+          if(arr[i] < arr[i-1]) answer.push(arr[i]);
+        }
+
+        return answer;
+      }
+
+      console.log(solution([6, 11, 32, 24, 9, 2])); // 6, 24, 9, 2
+      console.log(solution2([6, 11, 32, 24, 9, 2])); // 6, 24, 9, 2
+    </script>
+  </body>
+</html>

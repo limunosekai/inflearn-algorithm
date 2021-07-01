@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      // 내가 작성한 답안
+      function solution(arr) {
+        let answer = [];
+        let temp = Number.MIN_SAFE_INTEGER;
+        
+        arr.forEach(item => {
+          if(item > temp) {
+            answer.push(item);
+            temp = item;
+          }
+        })
+
+        return answer;
+      }
+
+      // 선생님이 작성한 답안
+      function solution2(arr) {
+        let answer = [arr[0]];
+        let max = arr[0];
+        
+        for(let i=1; i<arr.length; i++) {
+          if(arr[i] > max) {
+            answer.push(arr[i]);
+            max = arr[i];
+          }
+        }
+        
+        return answer;
+      }
+
+      console.log(solution([170, 168, 172, 174, 171, 180, 178])); // 170, 172, 174, 180
+      console.log(solution2([170, 168, 172, 174, 171, 180, 178])); // 170, 172, 174, 180
+    </script>
+  </body>
+</html>
