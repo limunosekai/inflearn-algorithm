@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      // 내가 작성한 답안
+      function solution(arr) {
+        let answer = [];
+        let rank = 1;
+
+        for (let i = 0; i < arr.length; i++) {
+          for (let j = 0; j < arr.length; j++) {
+            if (arr[i] < arr[j]) rank++;
+          }
+          answer.push(rank);
+          rank = 1;
+        }
+
+        return answer;
+      }
+
+      // 선생님이 작성한 답안
+      function solution2(arr) {
+        let n = arr.length;
+        // 길이 5 배열의 요소를 모두 1로 초기화
+        let answer = Array.from({length: n}, () => 1);
+
+        for(let i=0; i<n; i++) {
+          for(j=0; j<n; j++) {
+            if(arr[j] > arr[i]) answer[i]++;
+          }
+        }
+
+        return answer;
+      }
+
+      console.log(solution([72, 88, 92, 100, 96])); // 5, 4, 3, 1, 2
+      console.log('---------------------------------');
+      console.log(solution2([72, 88, 92, 100, 96])); // 5, 4, 3, 1, 2
+    </script>
+  </body>
+</html>

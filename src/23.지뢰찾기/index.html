@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      // 내가 작성한 답안
+      function solution(arr) {
+        let answer = 0;
+        let up, down, left, right;
+
+        for(let i=0; i<arr.length; i++) {
+          for(let j=0; j<arr[i].length; j++) {
+            if(i-1 < 0) {
+              up = 0;
+            } else {
+              up = arr[i-1][j]; // 상
+            }
+            if(i+1 > arr.length-1) {
+              down = 0;
+            } else {
+              down = arr[i+1][j]; // 하
+            }
+            if(j-1 < 0) {
+              left = 0;
+            } else {
+              left = arr[i][j-1]; // 좌
+            }
+            if(j+1 > arr[i].length-1) {
+              right = 0;
+            } else {
+              right = arr[i][j+1]; // 우
+            }
+            
+
+            if(arr[i][j] > up && arr[i][j] > down
+              && arr[i][j] > left && arr[i][j] > right) answer++             
+          }
+        }
+
+        return answer;
+      }
+
+      // 선생님이 작성한 답안
+      function solution2(arr) {
+        let answer = 0;
+        let n = arr.length;
+        let dx = [-1, 0, 1, 0];
+        let dy = [0, 1, 0, -1];
+
+        for(let i=0; i<n; i++) {
+          for(let j=0; j<n; j++) {
+            let flag = 1;
+            for(let k=0; k<4; k++) {
+              let nx = i + dx[k];
+              let ny = j + dy[k];
+              if(nx >= 0 && nx < n && ny >= 0 && ny < n 
+                && arr[nx][ny] > arr[i][j]) {
+                flag = 0;
+                break
+              };
+            }
+            if(flag) answer++;
+          }
+        }
+
+        return answer;
+      }
+
+      console.log(
+        solution([
+          [5, 3, 7, 2, 3],
+          [3, 7, 1, 6, 1],
+          [7, 2, 5, 3, 4],
+          [4, 3, 6, 4, 1],
+          [8, 7, 3, 5, 2]
+        ])
+      ); // 10
+      console.log('---------------------------------');
+      console.log(
+        solution2([
+          [5, 3, 7, 2, 3],
+          [3, 7, 1, 6, 1],
+          [7, 2, 5, 3, 4],
+          [4, 3, 6, 4, 1],
+          [8, 7, 3, 5, 2]
+        ])
+      ); // 10
+    </script>
+  </body>
+</html>

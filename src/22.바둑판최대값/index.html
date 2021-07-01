@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      // 내가 작성한 답안
+      function solution(arr) {
+        let answer = 0;
+        let horizontal = 0;
+        let vertical = 0;
+        let left = 0;
+        let right = 0;
+        let max = Number.MIN_SAFE_INTEGER;
+
+        for (let i = 0; i < arr.length; i++) {
+          for (let j = 0; j < arr[i].length; j++) {
+            horizontal += arr[i][j];
+            vertical += arr[j][i];
+          }
+          if (horizontal > max) max = horizontal;
+          if (vertical > max) max = vertical;
+          horizontal = 0;
+          vertical = 0;
+          left += arr[i][i];
+          right += arr[i][arr.length - 1 - i];
+        }
+        if (left > max) max = left;
+        if (right > max) max = right;
+        answer = max;
+        return answer;
+      }
+
+      // 선생님이 작성한 답안
+      function solution2(arr) {
+        let answer = Number.MIN_SAFE_INTEGER;
+        let n = arr.length;
+        let sum1 = 0;
+        let sum2 = 0;
+
+        for (let i = 0; i < n; i++) {
+          sum1 = 0;
+          sum2 = 0;
+          for (let j = 0; j < n; j++) {
+            sum1 += arr[i][j];
+            sum2 += arr[j][i];
+          }
+          answer = Math.max(answer, sum1, sum2);
+        }
+        sum1 = 0;
+        sum2 = 0;
+
+        for (let i = 0; i < n; i++) {
+          sum1 += arr[i][i];
+          sum2 += arr[i][arr.length - 1 - i];
+          answer = Math.max(answer, sum1, sum2);
+        }
+
+        return answer;
+      }
+
+      console.log(
+        solution([
+          [11, 12, 13, 14, 15],
+          [16, 17, 18, 19, 20],
+          [29, 28, 27, 26, 25],
+          [24, 23, 22, 21, 20],
+          [15, 18, 19, 18, 13],
+        ])
+      ); // 135
+      console.log('---------------------------------');
+      console.log(
+        solution2([
+          [11, 12, 13, 14, 15],
+          [16, 17, 18, 19, 20],
+          [29, 28, 27, 26, 25],
+          [24, 23, 22, 21, 20],
+          [15, 18, 19, 14, 13],
+        ])
+      ); // 135
+    </script>
+  </body>
+</html>
