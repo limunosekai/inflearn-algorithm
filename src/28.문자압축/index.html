@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      // 내가 작성한 답안
+      function solution(str) {
+        let answer = '';
+        let temp = str.split('');
+        let count = 1;
+
+        for(let i=1; i<temp.length + 1; i++) {
+          if(temp[i-1] === temp[i]) {
+            count++;
+          } else {
+            answer += `${temp[i-1]}${count === 1 ? '' : count}`;
+            count = 1;
+          }
+        }
+        
+        return answer;
+      }
+
+      // 선생님이 작성한 답안
+      function solution2(s) {
+        let answer = '';
+        let cnt = 1;
+        s = s + ' ';
+        for(let i=0; i<s.length-1; i++) {
+          if(s[i] === s[i+1]) cnt++;
+          else {
+            answer+=s[i];
+            if(cnt > 1) answer+=String(cnt);
+            cnt = 1;
+          }
+        }
+
+        return answer;
+      }
+
+      console.log(solution('nnooodee')); // n2o3de2
+      console.log('---------------------------------');
+      console.log(solution2('nnooodee')); // n2o3de2
+    </script>
+  </body>
+</html>

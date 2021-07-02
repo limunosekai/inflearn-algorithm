@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      // 내가 작성한 답안
+      function solution(str) {
+        let answer = 0;
+
+        let target = str.replace(/[^0-9]/g, '');
+        answer = +target;
+
+        return answer;
+      }
+
+      // 선생님이 작성한 답안
+      function solution2(str) {
+        let answer = '';
+
+        for(let x of str) {
+          if(!isNaN(x)) answer += x;
+        }
+
+        return parseInt(answer);
+      }
+
+      console.log(solution('ewf0i3j2riop3r32rp')); // 32332
+      console.log('---------------------------------');
+      console.log(solution2('ewf0i3j2riop3r32rp')); // 32332
+    </script>
+  </body>
+</html>

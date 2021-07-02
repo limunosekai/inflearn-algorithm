@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      // 내가 작성한 답안
+      function solution(str) {
+        let answer = '';
+
+        let target = str.toLowerCase().replace(/[^a-z]/g, '').split('');
+        let reverse = target.reverse();
+        if(target.join('') !== reverse.join('')) {
+          answer = '회문이 아닙니다.';
+        } else {
+          answer = '회문입니다';
+        }
+
+        return answer;
+      }
+
+      // 선생님이 작성한 답안
+      function solution2(s) {
+        let answer = '회문입니다.';
+
+        s = s.toLowerCase().replace(/[^a-z]/g, '');
+        if(s.split('').reverse().join('') !== s) {
+          return '회문이 아닙니다.';
+        }
+
+        return answer;
+      }
+
+      console.log(solution('t(o)m2ato, b@aNANA, ananaB; otamoT;')); // '회문입니다'
+      console.log('---------------------------------');
+      console.log(solution2('t(o)m2ato, b@aNANA, ananaB; otamoT;')); // '회문입니다.'
+    </script>
+  </body>
+</html>

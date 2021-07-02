@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      // 내가 작성한 답안
+      function solution(str) {
+        let answer = '';
+        let flag = false;
+        let target = str.split('');
+        let temp = target.reverse();
+
+        for (let i = 0; i < target.length; i++) {
+          if (target[i].toUpperCase() === temp[i].toUpperCase()) {
+            flag = true;
+          } else {
+            flag = false;
+          }
+        }
+
+        if (flag) {
+          answer = '회문입니다.';
+        } else {
+          answer = '회문이 아닙니다.';
+        }
+
+        return answer;
+      }
+
+      // 선생님이 작성한 답안
+      function solution2(s) {
+        let answer = '회문입니다.';
+
+        s = s.toUpperCase();
+        let len = s.length;
+        for(let i=0; i<Math.floor(len/2); i++) {
+          if(s[i] !== s[len - 1- i]) return '회문이 아닙니다.';
+        }
+
+        return answer;
+      }
+
+      console.log(solution('levEl')); // '회문입니다'
+      console.log('---------------------------------');
+      console.log(solution2('levEl')); // '회문입니다.'
+    </script>
+  </body>
+</html>

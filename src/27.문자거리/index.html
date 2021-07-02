@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      // 내가 작성한 답안
+      function solution(str, target) {
+        let answer = [];
+        let min, distance;
+        let arr = str.split('');
+
+        for (let i = 0; i < arr.length; i++) {
+          min = Number.MAX_SAFE_INTEGER;
+          for (let j = 0; j < arr.length; j++) {
+            distance = 0;
+            if (arr[j] === target) {
+              distance = Math.abs(j - i);
+              if (min > distance) min = distance;
+            }
+          }
+          answer.push(min);
+        }
+
+        return answer.join('');
+      }
+
+      // 선생님이 작성한 답안
+      function solution2(s, t) {
+        let answer = [];
+        let p = 1000;
+        // 왼쪽부터
+        for (let x of s) {
+          if (x === t) {
+            p = 0;
+            answer.push(p);
+          } else {
+            p++;
+            answer.push(p);
+          }
+        }
+        // 오른쪽부터
+        p = 1000;
+        for (let i = s.length - 1; i >= 0; i--) {
+          if (s[i] === t) {
+            p = 0;
+          } else {
+            p++;
+            answer[i] = Math.min(answer[i], p);
+          }
+        }
+
+        return answer.join('');
+      }
+
+      console.log(solution('pleasehelpme', 'e')); // 210110101210
+      console.log('---------------------------------');
+      console.log(solution2('pleasehelpme', 'e')); // 210110101210
+    </script>
+  </body>
+</html>
