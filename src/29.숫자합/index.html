@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      // 내가 작성한 답안
+      function solution(arr) {
+        let max = Number.MIN_SAFE_INTEGER;
+
+        for(let i=0; i<arr.length; i++) {
+          let num1 = 0;
+          arr[i].toString().split('').forEach((num) => {
+            num1 += +num;
+          });
+          for(let j=i+1; j<arr.length; j++) {
+            let num2 = 0;
+            arr[j].toString().split('').forEach((num) => {
+              num2 += +num;
+            });
+            if(num1 > num2) {
+              max = arr[i];
+            } else if(num1 < num2) {
+              max = arr[j];
+            } else { 
+              if(arr[i] > arr[j]) max = arr[i];
+              else max = arr[j];
+            }
+          }
+        }
+
+        return max;
+      }
+
+      // 선생님이 작성한 답안
+      function solution2(arr) {
+        let answer = 0;
+        let max = Number.MIN_SAFE_INTEGER;
+
+        for(let x of arr) {
+          let sum = 0;
+          let temp = x;
+          while(temp) {
+            sum += (temp % 10);
+            temp = Math.floor(temp / 10);
+          }
+          if(sum > max) {
+            max = sum;
+            answer = x;
+          } else if (sum === max) {
+            if(x > answer) answer = x;
+          }
+        }
+
+        return answer;
+      }
+
+      console.log(solution([324, 129, 1234, 217, 9301, 85])); // 9301
+      console.log('---------------------------------');
+      console.log(solution2([324, 129, 1234, 217, 9301, 85])); // 9301
+    
+      // 굳이 이중 for문을 쓰지 않고 풀수도 있었다.
+      
+    </script>
+  </body>
+</html>
