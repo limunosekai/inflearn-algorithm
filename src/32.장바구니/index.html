@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      // 선생님이 작성한 답안
+      function solution2(arr, m) {
+        let answer = 0;
+        let n = arr.length;
+        let newArr = arr.sort((a,b) => (a[0] + a[1]) - (b[0] + b[1]));
+
+        for(let i=0; i<n; i++) {
+          let money = m - ((arr[i][0] / 2) + arr[i][1]);
+          let cnt = 1;
+          for(let j=0; j<n; j++) {
+            if(j !== i && (arr[j][0] + arr[j][1]) > money) break;
+            if(j !== i && (arr[j][0] + arr[j][1]) <= money) {
+              money -= (arr[j][0] + arr[j][1]);
+              cnt++;
+            } 
+          }
+          answer = Math.max(answer, cnt);
+        }
+
+        return answer;
+      }
+
+      console.log('---------------------------------');
+      console.log(
+        solution2([
+          [6, 6],
+          [2, 2],
+          [4, 3],
+          [4, 5],
+          [10, 3],
+        ], 28)
+      ); // 4
+
+      // 어떻게 풀면 좋을지 접근하지 못하였다.
+      // 작은 순서대로 정렬하고 루프를 돌며 할인할 상품을 먼저 정한다.
+      // 예산에서 할인된 상품금액을 먼저 빼고
+      // 할인된 상품을 제외한 나머지 상품을 순서대로
+      // 예산에서 다시 빼면서 카운팅을 한다.
+      // 예산보다 상품 금액이 크면 루프를 종료한다.
+      // 카운팅된 숫자중 가장 큰 값이 답. 
+
+    </script>
+  </body>
+</html>
