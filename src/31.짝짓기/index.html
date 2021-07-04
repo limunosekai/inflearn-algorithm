@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      // 내가 작성한 답안
+      function solution(arr) {
+        let answer = 0;
+        let mentor;
+        let mentee;
+        let isCouple = false;
+
+        for(let i=1; i<=arr[0].length; i++) {
+          for(let j=1; j<=arr[0].length; j++) {
+            isCouple = true;
+            for(let k=0; k<arr.length; k++) {
+              for(let s=0; s<arr[0].length; s++) {
+                if(arr[k][s] === i) mentor = s;
+                if(arr[k][s] === j) mentee = s;
+              }
+              if(mentor >= mentee) isCouple = false;
+            }
+            if(isCouple) answer++;
+          }
+        }
+
+        return answer;
+      }
+
+      // 선생님이 작성한 답안
+      function solution2(test) {
+        let answer = 0;
+        let m = test.length; // 테스트 횟수
+        let n = test[0].length; // 학생 수
+
+        for(let i=1; i<=n; i++) {
+          for(let j=1; j<=n; j++) {
+            let cnt = 0;
+            for(let k=0; k<m; k++) {
+              let pi = 0;
+              let pj = 0;
+              for(let s=0; s<n; s++) {
+                if(test[k][s] === i) pi = s;
+                if(test[k][s] === j) pj = s;
+              }
+              if(pi < pj) cnt++;
+            }
+            if(cnt === m) answer++;
+          }
+        }
+
+        return answer;
+      }
+
+      console.log(
+        solution([
+          [3, 4, 1, 2],
+          [4, 3, 2, 1],
+          [3, 1, 4, 2],
+        ])
+      ); // 1
+      console.log('---------------------------------');
+      console.log(
+        solution2([
+          [3, 4, 1, 2],
+          [4, 3, 2, 1],
+          [3, 1, 4, 2],
+        ])
+      ); // 3
+
+      // 처음에 문제를 잘못 이해했다..;;
+
+    </script>
+  </body>
+</html>
